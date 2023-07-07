@@ -11,4 +11,5 @@
     <string name="special_characters">Special Characters</string>
     <string name="generate">Generate</string>
     <string name="password_mask">********</string>
+    <string name="_8">8</string>
 </resources>

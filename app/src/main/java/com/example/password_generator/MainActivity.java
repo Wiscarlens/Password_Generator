@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton share;
     private ImageButton copy;
     private SeekBar passwordLength;
+    private TextView lengthTV;
     private CheckBox lowercase;
     private CheckBox uppercase;
     private CheckBox digits;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         share = findViewById(R.id.shareButton);
         copy = findViewById(R.id.copyButton);
         passwordLength = findViewById(R.id.passwordLengthSeekBar);
+        lengthTV = findViewById(R.id.passwordLengthTextView);
         lowercase = findViewById(R.id.lowercase_checkBox);
         uppercase = findViewById(R.id.uppercase_checkBox);
         digits = findViewById(R.id.digit_checkBox);
@@ -46,24 +48,39 @@ public class MainActivity extends AppCompatActivity {
 
         favorite.setColorFilter(Color.GRAY);
 
-        generateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!lowercase.isChecked() && !uppercase.isChecked() && !digits.isChecked() && !specialCharacters.isChecked()){
-                    Toast.makeText(MainActivity.this, "Check at least one case", Toast.LENGTH_SHORT).show();
-                } else {
-                    generatePassword();
-                }
-
+        generateButton.setOnClickListener(v -> {
+            if(!lowercase.isChecked() && !uppercase.isChecked() && !digits.isChecked() && !specialCharacters.isChecked()){
+                Toast.makeText(MainActivity.this, "Check at least one case", Toast.LENGTH_SHORT).show();
+            } else {
+                generatePassword();
             }
+
         });
 
         favorite.setOnClickListener(v -> toggleFavorite());
 
+        passwordLength.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                lengthTV.setVisibility(View.VISIBLE);
+                lengthTV.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
     }
 
     private void generatePassword() {
-        int length = passwordLength.getProgress() + 8; // Minimum length of 8 characters
+        int length = passwordLength.getProgress(); // Minimum length of 6 characters
         boolean useLowercase = lowercase.isChecked();
         boolean useUppercase = uppercase.isChecked();
         boolean useDigits = digits.isChecked();

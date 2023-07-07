@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="20dp"
+                android:layout_margin="15dp"
                 android:text="@string/password_mask"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -100,12 +100,25 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/passwordLengthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="@string/_8"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:visibility="gone" />
 
         <SeekBar
             android:id="@+id/passwordLengthSeekBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:max="64"
+            android:min="6"/>
 
         <CheckBox
             android:id="@+id/lowercase_checkBox"
