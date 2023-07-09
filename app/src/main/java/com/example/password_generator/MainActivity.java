@@ -2,6 +2,9 @@ package com.example.password_generator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -75,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
+        });
+
+        copy.setOnClickListener(v -> {
+            ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText("TextView", passwordView.getText().toString());
+            clipboardManager.setPrimaryClip(clipData);
+
+            Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
         });
 
     }
