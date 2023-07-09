@@ -62,15 +62,6 @@
                     app:srcCompat="@drawable/heart_icon" />
 
                 <ImageButton
-                    android:id="@+id/shareButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="bottom"
-                    android:backgroundTint="#FFFFFF"
-                    android:contentDescription="@string/sharebutton"
-                    app:srcCompat="@drawable/baseline_share_24" />
-
-                <ImageButton
                     android:id="@+id/copyButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
@@ -78,6 +69,15 @@
                     android:backgroundTint="#FFFFFF"
                     android:contentDescription="@string/copy_button"
                     android:src="@drawable/baseline_file_copy_24" />
+
+                <ImageButton
+                    android:id="@+id/shareButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="bottom"
+                    android:backgroundTint="#FFFFFF"
+                    android:contentDescription="@string/sharebutton"
+                    app:srcCompat="@drawable/baseline_share_24" />
 
             </LinearLayout>
 

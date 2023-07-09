@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -86,6 +87,17 @@ public class MainActivity extends AppCompatActivity {
             clipboardManager.setPrimaryClip(clipData);
 
             Toast.makeText(MainActivity.this, "Copied", Toast.LENGTH_SHORT).show();
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, passwordView.getText().toString());
+                shareIntent.setType("text/plain");
+                startActivity(shareIntent);
+            }
         });
 
     }
